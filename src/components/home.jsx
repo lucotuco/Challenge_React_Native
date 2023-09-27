@@ -1,17 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { View, Text, FlatList, Button } from 'react-native';
-import { useAuth } from '../context/AuthContext'; // Importa el contexto de autenticación
+import { useAuth } from '../AuthContext'; // Importa el contexto de autenticación
 
-// Ejemplo de datos de platos (puedes reemplazarlo con datos reales)
-const platosData = [
-  { id: 1, nombre: 'Plato 1', precio: 10, healthScore: 90, esVegano: false },
-  { id: 2, nombre: 'Plato 2', precio: 15, healthScore: 95, esVegano: true },
-  { id: 3, nombre: 'Plato 3', precio: 12, healthScore: 88, esVegano: false },
-  { id: 4, nombre: 'Plato 4', precio: 18, healthScore: 92, esVegano: true },
-];
+
 
 const Home = () => {
-  const { token } = useAuth(); // Obtén el token de autenticación desde el contexto
   const [menu, setMenu] = useState([]);
   const [acumulativoPrecio, setAcumulativoPrecio] = useState(0);
   const [promedioHealthScore, setPromedioHealthScore] = useState(0);
@@ -42,8 +35,6 @@ const Home = () => {
   }, []);
 
   return (
-    <View>
-      {token ? (
         <View>
           <Text>Acumulativo de Precio: ${acumulativoPrecio.toFixed(2)}</Text>
           <Text>Promedio de Health Score: {promedioHealthScore.toFixed(2)}</Text>
@@ -60,10 +51,6 @@ const Home = () => {
             keyExtractor={(item) => item.id.toString()}
           />
         </View>
-      ) : (
-        <Text>Debes iniciar sesión para ver el menú.</Text>
-      )}
-    </View>
   );
 };
 

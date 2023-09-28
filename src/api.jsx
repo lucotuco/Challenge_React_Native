@@ -1,4 +1,4 @@
-import Platos from './Context';
+/*import Platos from './Context';
 
 const searchPlates = async (query) => {
     try {
@@ -23,3 +23,4 @@ const searchPlates = async (query) => {
   
   export default searchPlates;
   
+*/

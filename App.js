@@ -2,18 +2,18 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Home from './src/components/home'
 import Plato from './src/components/Plato'
-import Platos from './src/Context';
+import useDataContext  from './src/Context';
 
 export default function App() {
   return (
 
-    <Platos>
+    <useDataContext >
     <View style={styles.container}>
       <Home/>
       <Plato/>
       <StatusBar style="auto" />
     </View>
-    </Platos>
+    </useDataContext>
     
   );
 }

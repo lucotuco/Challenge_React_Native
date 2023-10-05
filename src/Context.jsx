@@ -1,7 +1,9 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
+
 import axios from "axios";
 
 const DataContext = createContext();
+
 export const useDataContext = () => {
   return useContext(DataContext);
 };
@@ -10,31 +12,20 @@ export const DataProvider = ({ children }) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
+    const fetchDataFromAPI = async () => {
+      try {
+        const response = await fetch(`https://api.spoonacular.com/food/menuItems/search?apiKey=6804828f174047269f342ccf36f63f8d&query=pasta&number=10`);
+        const data = await response.json();
+        setData(data);
+      } catch (error) {
+        console.error("Error fetching Pokemon data:", error);
+      }
+    };
+
     fetchDataFromAPI();
   }, []);
-
-  const fetchDataFromAPI = async () => {
-    try {
-      const response = await axios.get(
-        "https://api.spoonacular.com/recipes/complexSearch",
-        {
-          params: {
-            apiKey: "6804828f174047269f342ccf36f63f8d",
-          },
-        }
-      );
-
-      // Almacena los datos de la API en el estado local del contexto
-
-      setData(response.data);
-    } catch (error) {
-      console.error("Error al obtener datos de la API", error);
-    }
-  };
 
   return (
     <DataContext.Provider value={{ data }}>{children}</DataContext.Provider>
   );
-}
-  export function useDataContextPlato() {
-    return useContext(DataContext);};
+};

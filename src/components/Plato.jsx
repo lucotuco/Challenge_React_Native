@@ -1,24 +1,33 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 import { useDataContext } from "../Context";
+import { Card } from "react-native-paper";
+
 
 const PlatoItem = () => {
-  const data = useDataContext();
+  const {data} = useDataContext();
   console.log(data)
-  if (!Array.isArray(data)) { 
+  if (!data) { 
     return <Text>No hay datos disponibles.</Text>;
   }
 
+  
   return (
     <View>
-      {data.map((item) => (
-        <View key={item.id}>
-          <Image source={{ uri: item.image }} style={{ width: 100, height: 100 }} />
+      
+      {data.menuItems.map((item) => (
+        <Card key={item.id} style={{ margin: 10 }}>
+        <Card.Cover source={{ uri: item.image }} />
+        <Card.Content>
           <Text>{item.title}</Text>
-        </View>
+          {}
+        </Card.Content>
+      </Card>
       ))}
     </View>
   );
 };
 
 export default PlatoItem;
+
+

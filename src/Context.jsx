@@ -14,7 +14,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     const fetchDataFromAPI = async () => {
       try {
-        const response = await fetch(`https://api.spoonacular.com/food/menuItems/search?apiKey=6804828f174047269f342ccf36f63f8d&query=pasta&number=2`);
+        const response = await fetch(`https://api.spoonacular.com/food/menuItems/search?apiKey=d2b669cce7d641cd8c8ab976e4125928&query=pasta&number=2`);
         const data = await response.json();
         setData(data);
       } catch (error) {

@@ -26,7 +26,7 @@ const PlatoItem = () => {
         </Card.Content>
         <Button
         title="Go to Details"
-        onPress={() => navigation.navigate('DetallePlato')}
+        onPress={() => navigation.navigate('DetallePlato',{Idplato: data})}
       />
       </Card>
       ))}

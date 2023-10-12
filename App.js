@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 
 import { StyleSheet, Text, View } from "react-native";
 
-import Home from "./src/components/home";
+import DetallePlato from "./src/components/DetallePlato";
 
 import Plato from "./src/components/Plato";
 
@@ -21,7 +21,10 @@ export default function App() {
     <NavigationContainer>
       <View style={styles.container}>
       <Stack.Navigator>
-        <Stack.Screen name="Plato " component={<Plato/>}  />
+        <Stack.Screen name="Plato" component={Plato}  />
+        <Stack.Screen name="DetallePlato" component={DetallePlato}  />
+
+
       </Stack.Navigator>
         <StatusBar style="auto" />
       </View>
@@ -36,7 +39,6 @@ const styles = StyleSheet.create({
 
     backgroundColor: "#fff",
 
-    alignItems: "center",
 
     justifyContent: "center",
   },

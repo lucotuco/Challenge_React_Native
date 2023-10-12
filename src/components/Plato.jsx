@@ -2,9 +2,11 @@ import React from "react";
 import { View, Text, Image } from "react-native";
 import { useDataContext } from "../Context";
 import { Card } from "react-native-paper";
-
+import { useNavigation } from "@react-navigation/native";
+import {Button} from "react-native-paper";
 
 const PlatoItem = () => {
+  const navigation = useNavigation();
   const {data} = useDataContext();
   console.log(data)
   if (!data) { 
@@ -22,6 +24,10 @@ const PlatoItem = () => {
           <Text>{item.title}</Text>
           {}
         </Card.Content>
+        <Button
+        title="Go to Details"
+        onPress={() => navigation.navigate('DetallePlato')}
+      />
       </Card>
       ))}
     </View>

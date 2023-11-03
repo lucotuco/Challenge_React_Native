@@ -1,45 +1,35 @@
-import { StatusBar } from "expo-status-bar";
-
-import { StyleSheet, Text, View } from "react-native";
-
-import DetallePlato from "./src/components/DetallePlato";
-
-import Plato from "./src/components/Plato";
-
-import { DataProvider } from "./src/Context";
+import React, { useEffect, useState } from 'react';
+import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import MenuList from './componentes/Menu.jsx';
+import LoginScreen from './componentes/Login.jsx'
+import Detalles from './componentes/Detalles.jsx'
+import {AuthProvider} from './context/AuthContext.js'
+import {MenuProvider} from './context/MenuContext.js'
 
 
-const Stack = createNativeStackNavigator();
 
+const App = () => {
+  const Stack = createNativeStackNavigator();
 
-
-export default function App() {
   return (
-    <DataProvider>
+    <MenuProvider>
+    <AuthProvider>
     <NavigationContainer>
-      <View style={styles.container}>
       <Stack.Navigator>
-        <Stack.Screen name="Plato" component={Plato}  />
-        <Stack.Screen name="DetallePlato" component={DetallePlato}  />
-
-
+        <Stack.Screen name="Login" component={LoginScreen} options={{
+                headerShown: false,
+              }}/>
+        <Stack.Screen name="menu" component={MenuList} options={{
+                headerShown: false,
+              }}/>
+        <Stack.Screen name="detalles" component={Detalles} /> 
       </Stack.Navigator>
-        <StatusBar style="auto" />
-      </View>
     </NavigationContainer>
-    </DataProvider>
+    </AuthProvider>
+    </MenuProvider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-
-    backgroundColor: "#fff",
-
-
-    justifyContent: "center",
-  },
-});
+export default App;

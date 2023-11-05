@@ -8,7 +8,7 @@ const MenuList = ({ navigation }) => {
   const { menu, setMenu } = React.useContext(MenuContext);
 
   useEffect(() => {
-    fetch('https://api.spoonacular.com/recipes/complexSearch?apiKey=5163b17d295b4d59a4d339fc3b2cbeeb&addRecipeInformation=true', {
+    fetch('https://api.spoonacular.com/recipes/complexSearch?apiKey=2f3ecdfbb20e494da7885893868a2b7e&addRecipeInformation=true', {
       method: "GET",
     })
       .then(response => {
